@@ -36,6 +36,10 @@ FIRMWARE_MAXSIZE    = 1703936
 GITREV=$(shell git describe --always --dirty | tr '-' '_')
 CFLAGS += -DGITREV=$(GITREV)
 
+CFLAGS += $(shell pkg-config --cflags libusbgx)
+LDLIBS += $(shell pkg-config --libs libusbgx)
+LDFLAGS += -lbcm2835
+
 ## help commands:
 
 help: ## show this help
